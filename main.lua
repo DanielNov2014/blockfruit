@@ -11,7 +11,7 @@ gui.Parent = LocalPlayer.PlayerGui
 local frame = Instance.new("Frame")
 frame.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
 frame.Size = UDim2.fromScale(0.2, 0.9)
-frame.Position = UDim2.new(0, 0, 0.1, 0)
+frame.Position = UDim2.new(0.8, 0, 0.1, 0)
 frame.Parent = gui
 
 local button = Instance.new("TextButton")
@@ -26,6 +26,18 @@ button1.Size = UDim2.fromScale(0.3, 0.1)
 button1.Position = UDim2.new(0.3, 0, 0.446, 0)
 button1.Text = "sit"
 button1.Parent = frame
+local button2 = Instance.new("TextBox")
+button2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+button2.Size = UDim2.fromScale(0.3, 0.05)
+button2.Position = UDim2.new(0.3, 0, 0.546, 0)
+button2.PlaceholderText = "set walkspeed"
+button2.Parent = frame
+local button3 = Instance.new("TextBox")
+button3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+button3.Size = UDim2.fromScale(0.3, 0.05)
+button3.Position = UDim2.new(0.3, 0, 0.6, 0)
+button3.PlaceholderText = "set jumpheight"
+button3.Parent = frame
 
 local text = Instance.new("TextLabel")
 text.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -94,3 +106,19 @@ UserInputService.InputBegan:Connect(function(input, gameProcessed)
 		humanoidRootPart.Anchored = false
 	end
 end)
+while true do
+	if button2:GetPropertyChangedSignal("Text") then
+		if tonumber(button2.Text) then
+			print(button2.Text)
+			character.Humanoid.WalkSpeed = tonumber(button2.Text)
+		end
+	end
+	if button3:GetPropertyChangedSignal("Text") then
+		if tonumber(button3.Text) then
+			print(button3.Text)
+			character.Humanoid.JumpHeight = tonumber(button3.Text)
+		end
+	end
+	task.wait(1)
+end
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/DanielNov2014/blockfruit/main.lua"))()

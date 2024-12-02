@@ -41,7 +41,7 @@ text1.Position = UDim2.new(0.3, 0, 0.7, 0)
 text1.Parent = frame
 local text2 = Instance.new("TextLabel")
 text2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-text2.Text = "Q = down E = up"
+text2.Text = "Down key = down Up key = up"
 text2.Size = UDim2.fromScale(0.4, 0.1)
 text2.Position = UDim2.new(0.3, 0, 0.8, 0)
 text2.Parent = frame
@@ -59,39 +59,38 @@ button1.MouseButton1Click:Connect(function()
 		text1.Text = "action sitting"
 		humanoid.Sit = true
 	else
-		text1.Text = "action cant jump ):"
+		text1.Text = "action jump"
 		humanoid.Jump = true
 	end
 end)
 button1.MouseButton1Click:Connect(function()
-	
+
 end)
 
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
 	if gameProcessed then return end
 	humanoidRootPart.Anchored = true
-    if flying then
+	if flying then
 		if input.KeyCode == Enum.KeyCode.A then
 			text1.Text = "pressing (A)"
 			humanoidRootPart.CFrame = humanoidRootPart.CFrame + Vector3.new(-5, 0, 0)
 		elseif input.KeyCode == Enum.KeyCode.D then
 			text1.Text = "pressing (D)"
-            humanoidRootPart.CFrame = humanoidRootPart.CFrame + Vector3.new(5, 0, 0)
+			humanoidRootPart.CFrame = humanoidRootPart.CFrame + Vector3.new(5, 0, 0)
 		elseif input.KeyCode == Enum.KeyCode.S then
 			text1.Text = "pressing (S)"
-            humanoidRootPart.CFrame = humanoidRootPart.CFrame + Vector3.new(0, 0, 5)
+			humanoidRootPart.CFrame = humanoidRootPart.CFrame + Vector3.new(0, 0, 5)
 		elseif input.KeyCode == Enum.KeyCode.W then
 			text1.Text = "pressing (W)"
-            humanoidRootPart.CFrame = humanoidRootPart.CFrame + Vector3.new(0, 0, -5)
-		elseif input.KeyCode == Enum.KeyCode.Q then
-			text1.Text = "pressing (Q)"
-            humanoidRootPart.CFrame = humanoidRootPart.CFrame + Vector3.new(0, -5, 0)
-		elseif input.KeyCode == Enum.KeyCode.E then
-			text1.Text = "pressing (E)"
-            humanoidRootPart.CFrame = humanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+			humanoidRootPart.CFrame = humanoidRootPart.CFrame + Vector3.new(0, 0, -5)
+		elseif input.KeyCode == Enum.KeyCode.Down then
+			text1.Text = "pressing (Down)"
+			humanoidRootPart.CFrame = humanoidRootPart.CFrame + Vector3.new(0, -5, 0)
+		elseif input.KeyCode == Enum.KeyCode.Up then
+			text1.Text = "pressing (Up)"
+			humanoidRootPart.CFrame = humanoidRootPart.CFrame + Vector3.new(0, 5, 0)
 		end
 	else
 		humanoidRootPart.Anchored = false
-    end
+	end
 end)
-
